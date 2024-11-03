@@ -91,8 +91,10 @@ export default function Shiritory() {
   const handleTurnSwitch = () => {
     if (user === 1) {
       setUser(2);
+      setPoint({...point, user1: point.user1 + 1 }); 
     } else {
       setUser(1);
+      setPoint({...point, user2: point.user2 + 1 }); 
     }
     setCountDown(10);
     setInputWord1("");
@@ -110,7 +112,7 @@ export default function Shiritory() {
       });
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (point.user1 < 0 || point.user2 < 0) {
@@ -134,6 +136,10 @@ export default function Shiritory() {
     setError1("");
     setError1("");
   };
+  useEffect(()=>{
+    console.log("user", user);
+    
+  },[user])
 
   return (
     <div>
