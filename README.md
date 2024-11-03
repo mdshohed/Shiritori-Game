@@ -12,5 +12,5 @@ npm run dev
 ## Vercel Deploy Link:
 
 ```
-
+https://shiritori-game.vercel.app/
 ```
