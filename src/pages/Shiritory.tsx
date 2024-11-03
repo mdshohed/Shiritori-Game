@@ -136,6 +136,7 @@ export default function Shiritory() {
   const handleIsStart = () => {
     setFlag((p) => !p);
     setCountDown(10);
+    setUser(1); 
     setFirstUserWord([]);
     setSecondUserWord([]);
     setError1("");
