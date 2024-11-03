@@ -99,6 +99,8 @@ export default function Shiritory() {
     setCountDown(10);
     setInputWord1("");
     setInputWord2("");
+    setError1("");
+    setError2("");
   };
 
   useEffect(() => {
