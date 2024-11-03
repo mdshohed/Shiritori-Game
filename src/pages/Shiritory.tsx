@@ -139,6 +139,7 @@ export default function Shiritory() {
     setFlag((p) => !p);
     setCountDown(10);
     setUser(1); 
+    setPoint({user1: 20, user2: 20});
     setFirstUserWord([]);
     setSecondUserWord([]);
     setError1("");
