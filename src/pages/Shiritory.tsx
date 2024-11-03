@@ -72,7 +72,7 @@ export default function Shiritory() {
           setSecondUserWord([...WordList, inputWord2]);
           setInputWord2("");
           setUser(1);
-          setPoint({ ...point, user2: point.user2 - inputWord1.length });
+          setPoint({ ...point, user2: point.user2 - inputWord2.length });
           setCurrentChar(inputWord2[inputWord2.length - 1]);
           setCountDown(10);
         } else {
@@ -91,10 +91,10 @@ export default function Shiritory() {
   const handleTurnSwitch = () => {
     if (user === 1) {
       setUser(2);
-      setPoint({...point, user1: point.user1 + 1 }); 
+      setPoint({ ...point, user1: point.user1 + 1 });
     } else {
       setUser(1);
-      setPoint({...point, user2: point.user2 + 1 }); 
+      setPoint({ ...point, user2: point.user2 + 1 });
     }
     setCountDown(10);
     setInputWord1("");
@@ -102,16 +102,21 @@ export default function Shiritory() {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCountDown((prev) => {
-        if (prev <= 1) {
-          handleTurnSwitch();
-          // return 10;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-    return () => clearInterval(interval);
+    
+      const interval = setInterval(() => {
+      
+          setCountDown((prev) => {
+          if (prev <= 1) {
+            handleTurnSwitch();
+            // return 10;
+          }
+          return prev - 1;
+        });
+      
+        
+      }, 1000);
+      return () => clearInterval(interval);
+    
   }, [user]);
 
   useEffect(() => {
@@ -136,10 +141,6 @@ export default function Shiritory() {
     setError1("");
     setError1("");
   };
-  useEffect(()=>{
-    console.log("user", user);
-    
-  },[user])
 
   return (
     <div>
@@ -176,7 +177,7 @@ export default function Shiritory() {
                       value={inputWord1}
                       onChange={(e) => handleCheckWord(e.target.value)}
                     ></Input>
-                    <Button onClick={handleEnter}>Enter</Button>
+                    <Button disabled={user == 2} onClick={handleEnter}>Enter</Button>
                   </div>
                   {error1 && <p className="text-red-400 ">{error1}</p>}
                   <div className="py-2">
@@ -223,7 +224,7 @@ export default function Shiritory() {
                       value={inputWord2}
                       onChange={(e) => handleCheckWord(e.target.value)}
                     ></Input>
-                    <Button onClick={handleEnter}>Enter</Button>
+                    <Button disabled={user == 1} onClick={handleEnter}>Enter</Button>
                   </div>
                   {error2 && <p className="text-red-400 ">{error2}</p>}
                   <div className="py-2">
